@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JAVASCRIPT Test</title>
+</head>
+<body>
+	Book1 <input type="number" name="bookA"><br>
+	Book2 <input type="number" name="bookB"><br>
+	Book3 <input type="number" name="bookC"><br>
+	Book4 <input type="number" name="bookD"><br>
+	Book5 <input type="number" name="bookE">
+	<br><br>
+	
+	<button onclick="check()">Check</button>
+	<br><br>
+
+	TOTAL: <input type="number" name="total" style="text-align: right;" readonly> EUR
+
+
+
+</body>
+</html>
+<script type="text/javascript">
+	function check(){
+		var a = Math.ceil(document.getElementsByName("bookA")[0].value);
+		var b = Math.ceil(document.getElementsByName("bookB")[0].value);
+		var c = Math.ceil(document.getElementsByName("bookC")[0].value);
+		var d = Math.ceil(document.getElementsByName("bookD")[0].value);
+		var e = Math.ceil(document.getElementsByName("bookE")[0].value);
+
+		var books = [a,b,c,d,e];
+
+		var max = Math.max(a,b,c,d,e);
+		console.log(books);
+
+		var sum = 0;
+
+		for(var i = 0; i < max; i++){
+			var count = 0;
+
+			for(var x = 0; x < books.length; x++){
+				// console.log(books[x]);
+				if(books[x] != 0){
+					books[x] = books[x] - 1;
+					count++;
+				}
+			}
+
+			var total = 0;
+			total = 8 * count;
+
+			switch(count){
+				case 5:
+				sum += total - (total*0.25);
+				break;
+
+				case 4:
+				sum += total - (total*0.20);
+				break;
+
+				case 3:
+				sum += total - (total*0.10);
+				break;
+
+				case 2:
+				sum += total - (total*0.05);
+				break;
+
+
+				case 1:
+				sum += total;
+				break;
+
+				default:
+				sum += 0;
+
+			}
+				console.log(sum);
+
+		}
+			document.getElementsByName("total")[0].value=sum;
+
+
+	}
+</script>
